@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "test": "vitest run",
     "verify:exceljs": "node scripts/verify-exceljs.mjs",
-    "create:sample": "node scripts/create-sample.mjs"
+    "create:sample": "node scripts/create-sample.mjs",
+    "create:sales-samples": "node scripts/create-sales-samples.mjs"
   },
   "dependencies": {
     "exceljs": "^4.4.0",
