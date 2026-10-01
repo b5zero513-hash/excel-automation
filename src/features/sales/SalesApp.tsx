@@ -112,7 +112,7 @@ export function SalesApp({ onOpenSplit }: { onOpenSplit: () => void }) {
       <section className="sales-hero" id="top">
         <div className="hero-text">
           <p className="sales-eyebrow">毎日の店舗集計を、まとめて簡単に</p>
-          <h1>5店舗の売上Excel。<br />毎日ひとつずつ開く作業を、<br className="desktop-line" />まとめて集計。</h1>
+          <h1>5店舗から届く売上Excel。<br />まとめて入れて、すぐ集計。</h1>
           <p className="sales-lead">各店から届く売上ファイルを一度に選ぶだけ。<br className="desktop-line" />店舗別・カテゴリ別の結果をすぐに確認できます。</p>
           <div className="value-points"><span>✓ 店舗別の売上</span><span>✓ 全店舗の合計</span><span>✓ カテゴリ別の内訳</span></div>
         </div>
