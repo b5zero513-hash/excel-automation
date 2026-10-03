@@ -18,7 +18,7 @@ function dateLabel(date: string) {
   return new Intl.DateTimeFormat('ja-JP', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }).format(new Date(`${date}T00:00:00Z`));
 }
 
-export function SalesApp({ onOpenSplit }: { onOpenSplit: () => void }) {
+export function SalesApp({ onOpenSplit, onSummaryChange }: { onOpenSplit: () => void; onSummaryChange?: (summary: SalesSummary | null) => void }) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [files, setFiles] = useState<File[]>([]);
   const [summary, setSummary] = useState<SalesSummary | null>(null);
@@ -29,6 +29,7 @@ export function SalesApp({ onOpenSplit }: { onOpenSplit: () => void }) {
   async function aggregate(filesToAggregate: File[]) {
     setFiles(filesToAggregate);
     setSummary(null);
+    onSummaryChange?.(null);
     setOutput(null);
     setError('');
     if (!filesToAggregate.length) return;
@@ -37,6 +38,7 @@ export function SalesApp({ onOpenSplit }: { onOpenSplit: () => void }) {
       const nextSummary = await aggregateSalesFiles(filesToAggregate);
       const bytes = await createSalesWorkbook(nextSummary);
       setSummary(nextSummary);
+      onSummaryChange?.(nextSummary);
       setOutput(bytes);
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : 'Excelを集計できませんでした。ファイルの内容を確認してください。');
@@ -55,6 +57,7 @@ export function SalesApp({ onOpenSplit }: { onOpenSplit: () => void }) {
     setBusy(true);
     setFiles([]);
     setSummary(null);
+    onSummaryChange?.(null);
     setOutput(null);
     setError('');
     try {
@@ -68,6 +71,7 @@ export function SalesApp({ onOpenSplit }: { onOpenSplit: () => void }) {
       const nextSummary = await aggregateSalesFiles(sampleFiles);
       const bytes = await createSalesWorkbook(nextSummary);
       setSummary(nextSummary);
+      onSummaryChange?.(nextSummary);
       setOutput(bytes);
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : 'サンプルを集計できませんでした。');
@@ -90,6 +94,7 @@ export function SalesApp({ onOpenSplit }: { onOpenSplit: () => void }) {
   function reset() {
     setFiles([]);
     setSummary(null);
+    onSummaryChange?.(null);
     setOutput(null);
     setError('');
   }
