@@ -357,10 +357,12 @@ body { background: #f7f5f1; color: #292d2a; }
 .product-mark { width: 49px; height: 49px; display: grid; place-items: center; border-radius: 15px 15px 15px 5px; background: #326b56; color: #fff; font-size: 23px; font-weight: 850; }
 .product-heading p { margin: 0 0 3px; color: #68736b; font-size: 12px; }
 .product-heading h1 { margin: 0; font-size: 23px; letter-spacing: .01em; }
-.product-price { justify-self: end; display: grid; grid-template-columns: auto auto; align-items: baseline; column-gap: 10px; padding: 11px 16px; border: 1px solid var(--product-line); border-radius: 11px; background: #fff; }
+.product-price { justify-self: end; display: grid; grid-template-columns: auto; align-items: baseline; gap: 4px; max-width: 310px; padding: 12px 15px; border: 1px solid var(--product-line); border-radius: 11px; background: #fff; }
 .product-price span { color: var(--product-muted); font-size: 12px; }
-.product-price strong { color: #326b56; font-size: 18px; }
-.product-price small { grid-column: 1 / -1; margin-top: 2px; color: #8b908a; font-size: 10px; text-align: right; }
+.product-price strong { color: #326b56; font-size: 20px; }
+.product-price small { margin-top: 2px; color: #68736b; font-size: 10px; line-height: 1.6; }
+.product-price-links { display: flex; flex-wrap: wrap; gap: 5px 12px; margin-top: 5px; }
+.product-price-links a { color: #326b56; font-size: 10px; font-weight: 700; line-height: 1.5; text-underline-offset: 2px; }
 .product-nav { display: flex; justify-content: space-between; align-items: center; min-height: 64px; border-bottom: 1px solid var(--product-line); }
 .product-nav [role="tablist"] { height: 64px; display: flex; gap: 8px; }
 .product-nav button { position: relative; min-width: 112px; padding: 0 16px; border: 0; background: transparent; color: #747a73; font-size: 14px; font-weight: 700; }
@@ -477,9 +479,11 @@ body { background: #f7f5f1; color: #292d2a; }
   .product-heading p { font-size: 10px; }
   .product-heading h1 { font-size: 16px; }
   .product-mark { width: 36px; height: 36px; border-radius: 11px 11px 11px 4px; font-size: 18px; }
-  .product-price { grid-template-columns: auto; gap: 0; padding: 7px 10px; text-align: center; }
-  .product-price strong { font-size: 15px; }
-  .product-price small { font-size: 8px; text-align: center; }
+  .product-price { gap: 2px; max-width: 180px; padding: 7px 9px; text-align: center; }
+  .product-price strong { font-size: 15px; white-space: nowrap; }
+  .product-price small { font-size: 8px; line-height: 1.45; }
+  .product-price-links { justify-content: center; gap: 3px 8px; margin-top: 3px; }
+  .product-price-links a { font-size: 8px; }
   .product-nav { min-height: 56px; }
   .product-nav [role="tablist"] { height: 56px; gap: 0; }
   .product-nav button { min-width: 82px; padding: 0 8px; font-size: 12px; }

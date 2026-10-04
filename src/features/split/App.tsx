@@ -43,7 +43,7 @@ function Specs() {
     <div className="spec-section"><h2>入力条件</h2><dl className="spec-list"><div><dt>ファイル</dt><dd>店舗ごとのExcelブック。1ファイルにつき1店舗の売上データ</dd></div><div><dt>必須見出し</dt><dd>売上日、店舗コード、店舗名、商品コード、商品名、カテゴリ、販売数量、単価、売上金額、支払方法</dd></div><div><dt>列の並び</dt><dd>見出し名で項目を判定するため列順は変更できます。見出しは1行目、データは2行目以降です。</dd></div><div><dt>データ条件</dt><dd>全ファイルで売上日を統一し、店舗コードが重複しないようにしてください。</dd></div><div><dt>上限</dt><dd>最大10ファイル、1ファイル10 MiB以下、合計50 MiB以下、統合後100,000行以下</dd></div></dl></div>
     <div className="spec-two-col"><section className="spec-section"><h2>対応形式</h2><p>通常の値が並ぶ `.xlsx` ファイルに対応します。`.xls`、暗号化ブック、マクロブックは対象外です。</p></section><section className="spec-section"><h2>処理とデータの扱い</h2><p>ブラウザー内で読み込み・検証・集計します。選択した売上ファイルをサーバーへ送信したり、ローカルストレージへ保存したりしません。</p></section></div>
     <div className="spec-two-col"><section className="spec-section"><h2>集計内容</h2><ul><li>全店舗の売上合計・販売数量</li><li>店舗ごとの売上と販売数量</li><li>カテゴリごとの売上と販売数量</li></ul></section><section className="spec-section"><h2>出力内容</h2><p>新しい `.xlsx` ブックに3シートを作成します。</p><ol><li>全店舗統合データ</li><li>店舗別集計</li><li>カテゴリ別集計</li></ol></section></div>
-    <div className="spec-caveat"><strong>対象外・ご注意</strong><p>数式、結合セル、画像・グラフ・ピボット、外部リンクなどを含むブックは処理対象外です。出力ブックがExcelの高度な機能や表示をすべて保持するものではありません。料金は現在未確定です。</p></div>
+    <div className="spec-caveat"><strong>対象外・ご注意</strong><p>数式、結合セル、画像・グラフ・ピボット、外部リンクなどを含むブックは処理対象外です。出力ブックがExcelの高度な機能や表示をすべて保持するものではありません。基本料金は50,000円〜（税別）です。機能追加・個別カスタマイズは別途お見積りとなります。</p></div>
   </section>;
 }
 
@@ -105,8 +105,8 @@ export function App() {
   return <div className="product-page">
     <header className="product-header">
       <a className="catalog-link" href="#demo" onClick={() => selectView('demo')}><span aria-hidden="true">←</span> 商品ページ</a>
-      <div className="product-heading"><span className="product-mark" aria-hidden="true">X</span><div><p>店舗業務を、Excelから効率化</p><h1>店舗売上Excel 集計</h1></div></div>
-      <div className="product-price"><span>料金</span><strong>未定</strong><small>提供条件を確認中</small></div>
+      <div className="product-heading"><span className="product-mark" aria-hidden="true">X</span><div><p>店舗業務を、Excelから効率化</p><h1>Excel売上集計</h1></div></div>
+      <div className="product-price" aria-label="基本料金 50,000円から 税別"><span>基本料金</span><strong>50,000円〜（税別）</strong><small>基本料金です。機能追加・個別カスタマイズは別途お見積りとなります。</small><div className="product-price-links"><a href="https://apurihp-production-edf3.up.railway.app/?items=excel-sales-summary" target="_blank" rel="noreferrer">概算見積りを見る</a><a href="https://mirailab0924.com/production-contact/" target="_blank" rel="noreferrer">制作・カスタマイズについて相談する</a></div></div>
     </header>
     <nav className="product-nav" aria-label="商品ページ"><div role="tablist" aria-label="商品情報の画面" onKeyDown={handleTabKeyDown}>{views.map((item) => <button key={item.id} type="button" role="tab" id={`tab-${item.id}`} aria-selected={view === item.id} aria-controls={`panel-${item.id}`} tabIndex={view === item.id ? 0 : -1} className={view === item.id ? 'active' : ''} onClick={() => selectView(item.id)}>{item.label}</button>)}</div><span className="nav-caption">商品ページ</span></nav>
     <main>
@@ -115,6 +115,6 @@ export function App() {
       <section id="panel-specs" role="tabpanel" aria-labelledby="tab-specs" hidden={view !== 'specs'} className="product-panel"><Specs /></section>
       <section id="panel-diagram" role="tabpanel" aria-labelledby="tab-diagram" hidden={view !== 'diagram'} className="product-panel"><Diagram /></section>
     </main>
-    <footer className="product-footer"><span>店舗売上Excel 集計</span><span>サンプルデータはすべて架空です · ファイルはブラウザー内で処理</span></footer>
+    <footer className="product-footer"><span>Excel売上集計</span><span>サンプルデータはすべて架空です · ファイルはブラウザー内で処理</span></footer>
   </div>;
 }
